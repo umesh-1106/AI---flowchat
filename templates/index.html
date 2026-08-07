@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Flow Chat</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body>
+
+<div class="container">
+
+    <!-- ================= LEFT CHAT ================= -->
+
+    <div class="chat-section">
+
+        <div class="header">
+            <h2>🤖 AI Flow Chat</h2>
+            <button id="clearBtn">Clear Chat</button>
+        </div>
+
+        <div id="chatBox" class="chat-box">
+
+            <div class="message ai">
+                <div class="avatar">🤖</div>
+
+                <div class="bubble">
+                    Hello 👋<br><br>
+                    I can generate:
+
+                    <ul>
+                        <li>HTML Websites</li>
+                        <li>CSS</li>
+                        <li>JavaScript</li>
+                        <li>Python</li>
+                        <li>Flask Projects</li>
+                        <li>Arduino Code</li>
+                    </ul>
+
+                    Type your prompt below.
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="input-area">
+
+            <textarea
+                id="prompt"
+                placeholder="Ask anything..."
+                rows="2"></textarea>
+
+            <button id="sendBtn">
+                ➤
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- ================= RIGHT PREVIEW ================= -->
+
+    <div class="preview-section">
+
+        <div class="preview-header">
+
+            <h2>🌐 Live Preview</h2>
+
+        </div>
+
+        <iframe
+            id="previewFrame"
+            title="Live Preview">
+        </iframe>
+
+    </div>
+
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>
