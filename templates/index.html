@@ -1,86 +1,210 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Flow Chat</title>
+    <meta charset="UTF-8">
 
-<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
+    <title>AI Web Generator</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
 </head>
+
 <body>
 
-<div class="container">
+    <header class="topbar">
 
-    <!-- ================= LEFT CHAT ================= -->
-
-    <div class="chat-section">
-
-        <div class="header">
-            <h2>🤖 AI Flow Chat</h2>
-            <button id="clearBtn">Clear Chat</button>
+        <div class="logo">
+            <span class="logo-icon">✦</span>
+            AI Web Generator
         </div>
 
-        <div id="chatBox" class="chat-box">
+        <div class="status">
+            <span class="status-dot"></span>
+            AI Ready
+        </div>
 
-            <div class="message ai">
-                <div class="avatar">🤖</div>
+    </header>
 
-                <div class="bubble">
-                    Hello 👋<br><br>
-                    I can generate:
 
-                    <ul>
-                        <li>HTML Websites</li>
-                        <li>CSS</li>
-                        <li>JavaScript</li>
-                        <li>Python</li>
-                        <li>Flask Projects</li>
-                        <li>Arduino Code</li>
-                    </ul>
+    <main class="workspace">
 
-                    Type your prompt below.
+        <!-- LEFT SIDE -->
+
+        <section class="left-panel">
+
+            <div class="panel-header">
+
+                <div>
+                    <h2>Prompt</h2>
+                    <p>Describe the website you want</p>
+                </div>
+
+                <button id="clearBtn"
+                        class="small-button">
+                    Clear
+                </button>
+
+            </div>
+
+
+            <div class="prompt-container">
+
+                <textarea
+                    id="promptInput"
+                    placeholder="Describe your website...
+
+Example:
+
+Create a modern login page with a dark blue background, glass effect, username field, password field and animated login button."
+                    spellcheck="false"></textarea>
+
+                <div class="prompt-footer">
+
+                    <span id="characterCount">
+                        0 characters
+                    </span>
+
+                    <span id="typingStatus">
+                        Ready
+                    </span>
+
                 </div>
 
             </div>
 
-        </div>
 
-        <div class="input-area">
+            <button id="generateBtn"
+                    class="generate-button">
 
-            <textarea
-                id="prompt"
-                placeholder="Ask anything..."
-                rows="2"></textarea>
+                <span id="generateIcon">✦</span>
 
-            <button id="sendBtn">
-                ➤
+                <span id="generateText">
+                    Generate Website
+                </span>
+
             </button>
 
-        </div>
 
+            <div class="examples">
+
+                <h3>Try an example</h3>
+
+                <button class="example"
+                        data-prompt="Create a modern student dashboard with attendance, marks, subjects, timetable and profile cards. Use a beautiful blue and white design.">
+                    🎓 Student Dashboard
+                </button>
+
+                <button class="example"
+                        data-prompt="Create a modern login page with a dark background, glassmorphism card, email, password, remember me checkbox and animated login button.">
+                    🔐 Login Page
+                </button>
+
+                <button class="example"
+                        data-prompt="Create a beautiful portfolio website for a software developer with hero section, skills, projects, about section and contact form.">
+                    💻 Portfolio
+                </button>
+
+                <button class="example"
+                        data-prompt="Create an online shopping website with product cards, search box, navigation bar, shopping cart and attractive modern design.">
+                    🛒 Shopping Website
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- RIGHT SIDE -->
+
+        <section class="right-panel">
+
+            <div class="preview-header">
+
+                <div>
+
+                    <h2>Live Preview</h2>
+
+                    <p id="previewStatus">
+                        Your generated website appears here
+                    </p>
+
+                </div>
+
+
+                <div class="preview-actions">
+
+                    <button id="refreshBtn"
+                            title="Refresh preview">
+                        ↻
+                    </button>
+
+                    <button id="openBtn"
+                            title="Open preview">
+                        ↗
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="preview-container">
+
+                <div id="emptyPreview"
+                     class="empty-preview">
+
+                    <div class="empty-icon">
+                        ✦
+                    </div>
+
+                    <h2>Your website will appear here</h2>
+
+                    <p>
+                        Start typing a description on the left.
+                    </p>
+
+                </div>
+
+
+                <iframe
+                    id="previewFrame"
+                    sandbox="allow-scripts allow-forms"
+                    style="display:none;">
+                </iframe>
+
+            </div>
+
+
+            <div class="code-bar">
+
+                <span>
+                    Generated HTML
+                </span>
+
+                <button id="copyBtn">
+                    Copy Code
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <div id="toast"
+         class="toast">
+        Copied!
     </div>
 
-    <!-- ================= RIGHT PREVIEW ================= -->
 
-    <div class="preview-section">
-
-        <div class="preview-header">
-
-            <h2>🌐 Live Preview</h2>
-
-        </div>
-
-        <iframe
-            id="previewFrame"
-            title="Live Preview">
-        </iframe>
-
-    </div>
-
-</div>
-
-<script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script src="{{ url_for('static', filename='script.js') }}">
+    </script>
 
 </body>
+
 </html>
